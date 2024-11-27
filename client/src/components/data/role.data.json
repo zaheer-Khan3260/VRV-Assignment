@@ -1,0 +1,21 @@
+[
+  {
+    "id": "brp5",
+    "role": "Admin",
+    "permissions": ["read", "write", "delete"],
+    "createdAt": "2022-01-01"
+  },
+  {
+    "id": "3596",
+    "role": "Moderator",
+    "permissions": ["read", "write"],
+    "createdAt": "2022-01-02"
+  },
+  {
+    "id": "2j9g",
+    "role": "User",
+    "permissions": ["read"],
+    "createdAt": "2022-01-03"
+  }
+]
+
