@@ -73,29 +73,25 @@ function User() {
         </div>
         <div>
             <main className="flex-grow md:p-6 pt-6 bg-third-background text-white">
-                <div className="flex justify-between items-center mb-4 px-24 pr-28 w-full xl:w-[calc(100%-28rem)] md:mx-auto">
-                    <div className="flex  justify-between w-full px-4 md:px-0">
-                        <div className="text-gray-600">Total Count: {users.length}</div>
-                        <button
-                        onClick={() => setAddUser(true)} 
-                        className="bg-blue-500 text-white py-1 px-3 rounded">
-                            Add Users
-                        </button>
-                    </div>
-                </div>
                 <div className="overflow-auto rounded-xl w-full 2xl:w-[calc(100%-28rem)] mx-auto flex flex-wrap justify-center xl:justify-start gap-4 md:p-3 md:pl-8 xl:pl-20">
-                    <div className="w-full flex justify-between mb-4 mr-24 items-center">
+                    <div className="w-full flex justify-between mb-4 items-center px-2 md:px-4 xl:px-0">
                         <div className="relative">
-                            <FiSearch className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
+                        <div className="text-gray-600 mb-4">Total Count: {users.length}</div>
+                            <FiSearch className="absolute top-3/4 transform -translate-y-1/2 left-3 text-gray-500" />
                             <input
                                 type="text"
                                 placeholder="Search users..."
-                                className="bg-gray-800 text-white rounded-lg px-10 py-2 focus:outline-none w-64"
+                                className="bg-gray-800 text-white rounded-lg px-10 py-2 focus:outline-none w-48 md:w-64"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                        <div className="relative group">
+                        <div className="relative group xl:pr-20 2xl:pr-32">
+                        <button
+                        onClick={() => setAddUser(true)} 
+                        className="bg-blue-500 text-white py-1 px-2 rounded mb-4">
+                            Add Users
+                        </button>
                             <button className="bg-gray-800 text-white rounded-lg px-3 py-2 flex items-center">
                                 <span>Filter</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
