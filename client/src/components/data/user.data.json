@@ -5,8 +5,8 @@
     "id": 96548,
     "isActive": true,
     "permissions": ["read", "write"],
-    "role": "admin",
-    "createdAt": "2022-01-01T00:00:00.000Z"
+    "role": "Admin",
+    "createdAt": "2022-01-01"
   },
   {
     "name": "Jane Doe",
@@ -14,8 +14,8 @@
     "id": 653245,
     "isActive": false,
     "permissions": ["read"],
-    "role": "user",
-    "createdAt": "2022-01-02T00:00:00.000Z"
+    "role": "User",
+    "createdAt": "2022-01-02"
   }
 ]
 

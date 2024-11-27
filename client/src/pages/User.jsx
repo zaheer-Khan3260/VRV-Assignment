@@ -11,10 +11,14 @@ function User() {
   const [users, setUsers] = useState([]);
   const [id, setId] =  useState();
   const [searchTerm, setSearchTerm] = useState('');
+  const [roles, setRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState(null);
 
   useEffect(() => {
     const usersData = JSON.parse(localStorage.getItem("users")) || [];
     setUsers(usersData);
+    const rolesData = JSON.parse(localStorage.getItem("roles")) || [];
+    setRoles(rolesData);
   }, [addUser]);
 
   const handleDelete = (id) => {
@@ -35,6 +39,18 @@ function User() {
   const handleClose= () => {
     setId("");
     setAddUser(false);
+  }
+
+  const handleFilter = (role) => {
+    if (role === 'All') {
+      setSelectedRole(null);
+      const usersData = JSON.parse(localStorage.getItem("users")) || [];
+      setUsers(usersData);
+    } else {
+      setSelectedRole(role);
+      const filteredUsers = users.filter(user => user.role === role);
+      setUsers(filteredUsers);
+    }
   }
 
   const toggleStatus = (id) => {
@@ -68,7 +84,7 @@ function User() {
                     </div>
                 </div>
                 <div className="overflow-auto rounded-xl w-full 2xl:w-[calc(100%-28rem)] mx-auto flex flex-wrap justify-center xl:justify-start gap-4 md:p-3 md:pl-8 xl:pl-20">
-                    <div className="w-full flex justify-end mb-4 mr-24">
+                    <div className="w-full flex justify-between mb-4 mr-24 items-center">
                         <div className="relative">
                             <FiSearch className="absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-500" />
                             <input
@@ -78,6 +94,33 @@ function User() {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
+                        </div>
+                        <div className="relative group">
+                            <button className="bg-gray-800 text-white rounded-lg px-3 py-2 flex items-center">
+                                <span>Filter</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                </svg>
+                            </button>
+                            <div className="absolute bg-white text-gray-800 w-48 rounded-lg shadow-lg z-10 hidden group-hover:block">
+                                <div className="py-2">
+                                    <div
+                                        className={`px-4 py-2 hover:bg-gray-200 cursor-pointer ${selectedRole === null ? 'bg-gray-200' : ''}`}
+                                        onClick={() => handleFilter('All')}
+                                    >
+                                        All
+                                    </div>
+                                    {roles.map((role) => (
+                                        <div
+                                            key={role.id}
+                                            className={`px-4 py-2 hover:bg-gray-200 cursor-pointer ${selectedRole === role.role ? 'bg-gray-200' : ''}`}
+                                            onClick={() => handleFilter(role.role)}
+                                        >
+                                            {role.role}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {
