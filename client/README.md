@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Role Based Access Control
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+This React application provides a comprehensive user management system with advanced features including recent log tracking, user search, and role-based filtering.
 
-## Available Scripts
+## Local Setup and Installation
 
-In the project directory, you can run:
+### Prerequisites
+- Node.js (Version 16.0 or higher)
+- npm (Node Package Manager)
+- Git
 
-### `npm start`
+### Installation Steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/zaheer-Khan3260/VRV-Assignment.git
+   cd client
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-### `npm test`
+3. **Start Development Server**
+   ```bash
+   npm start
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Access the Application**
+   Open your browser and navigate to `http://localhost:3000`
 
-### `npm run build`
+### Project Structure
+```
+project-root/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── customHooks
+│   └── assests
+│
+├── public/
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Recent Log Tracking
+The application includes a robust recent log feature that captures and displays user activities:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Functionality**: 
+  - Tracks user interactions and system events
+  - Stores timestamp and details of each log entry
+  - Provides a chronological view of recent activities
 
-### `npm run eject`
+- **Technical Implementation**:
+  - Uses local storage or state management for log persistence
+  - Implements a mechanism to limit log entries (e.g., last 50 entries)
+  - Allows filtering and sorting of log entries
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. User Search
+A powerful search functionality to find users quickly:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Search Capabilities**:
+  - Search users by full name
+  - Case-insensitive search
+  - Real-time search results
+  - Handles partial name matches
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Example Search Logic**
+  ```javascript
+  const searchUsers = (searchTerm) => {
+    return users.filter(user => 
+      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+  ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. User Role Filtering
+Comprehensive role-based user filtering:
 
-## Learn More
+- **Role Types**:
+  - Admin
+  - Manager
+  - Employee
+  - Contractor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Filtering Mechanism**
+  ```javascript
+  const filterUsersByRole = (role) => {
+    return users.filter(user => user.role === role);
+  }
+  ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Performance Considerations
+- Implemented efficient search and filter algorithms
+- Minimized re-renders using React hooks
+- Optimized search functionality with debounce technique
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
